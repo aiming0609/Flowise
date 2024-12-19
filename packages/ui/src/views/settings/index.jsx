@@ -1,21 +1,21 @@
-import { useState, useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
+import { useEffect, useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
 
 // material-ui
-import { useTheme } from '@mui/material/styles'
-import { ListItemButton, ListItemIcon, ListItemText, Typography, Box, List, Paper, Popper, ClickAwayListener } from '@mui/material'
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord'
+import { Box, ClickAwayListener, List, ListItemButton, ListItemIcon, ListItemText, Paper, Popper, Typography } from '@mui/material'
+import { useTheme } from '@mui/material/styles'
 
 // third-party
 import PerfectScrollbar from 'react-perfect-scrollbar'
 
 // project imports
-import MainCard from '@/ui-component/cards/MainCard'
-import Transitions from '@/ui-component/extended/Transitions'
-import settings from '@/menu-items/settings'
 import agentsettings from '@/menu-items/agentsettings'
 import customAssistantSettings from '@/menu-items/customassistant'
+import settings from '@/menu-items/settings'
+import MainCard from '@/ui-component/cards/MainCard'
+import Transitions from '@/ui-component/extended/Transitions'
 
 // ==============================|| SETTINGS ||============================== //
 

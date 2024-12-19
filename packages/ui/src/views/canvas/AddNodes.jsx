@@ -1,50 +1,50 @@
-import { useState, useRef, useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
 import PropTypes from 'prop-types'
+import { useEffect, useRef, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 // material-ui
-import { useTheme } from '@mui/material/styles'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import {
     Accordion,
-    AccordionSummary,
     AccordionDetails,
+    AccordionSummary,
     Box,
+    Chip,
     ClickAwayListener,
     Divider,
     InputAdornment,
     List,
-    ListItemButton,
     ListItem,
     ListItemAvatar,
+    ListItemButton,
     ListItemText,
     OutlinedInput,
     Paper,
     Popper,
     Stack,
-    Typography,
-    Chip,
     Tab,
-    Tabs
+    Tabs,
+    Typography
 } from '@mui/material'
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
+import { useTheme } from '@mui/material/styles'
 
 // third-party
 import PerfectScrollbar from 'react-perfect-scrollbar'
 
 // project imports
+import { StyledFab } from '@/ui-component/button/StyledFab'
 import MainCard from '@/ui-component/cards/MainCard'
 import Transitions from '@/ui-component/extended/Transitions'
-import { StyledFab } from '@/ui-component/button/StyledFab'
 
 // icons
-import { IconPlus, IconSearch, IconMinus, IconX } from '@tabler/icons-react'
-import LlamaindexPNG from '@/assets/images/llamaindex.png'
 import LangChainPNG from '@/assets/images/langchain.png'
+import LlamaindexPNG from '@/assets/images/llamaindex.png'
 import utilNodesPNG from '@/assets/images/utilNodes.png'
+import { IconMinus, IconPlus, IconSearch, IconX } from '@tabler/icons-react'
 
 // const
-import { baseURL } from '@/store/constant'
 import { SET_COMPONENT_NODES } from '@/store/actions'
+import { baseURL } from '@/store/constant'
 
 // ==============================|| ADD NODES||============================== //
 function a11yProps(index) {

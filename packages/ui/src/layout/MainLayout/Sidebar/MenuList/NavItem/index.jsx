@@ -1,15 +1,16 @@
 import PropTypes from 'prop-types'
 import { forwardRef, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 // material-ui
-import { useTheme } from '@mui/material/styles'
 import { Avatar, Chip, ListItemButton, ListItemIcon, ListItemText, Typography, useMediaQuery } from '@mui/material'
+import { useTheme } from '@mui/material/styles'
 
 // project imports
-import { MENU_OPEN, SET_MENU } from '@/store/actions'
 import config from '@/config'
+import { MENU_OPEN, SET_MENU } from '@/store/actions'
 
 // assets
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord'
@@ -19,6 +20,7 @@ import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord'
 const NavItem = ({ item, level, navType, onClick, onUploadFile }) => {
     const theme = useTheme()
     const dispatch = useDispatch()
+    const { t } = useTranslation()
     const customization = useSelector((state) => state.customization)
     const matchesSM = useMediaQuery(theme.breakpoints.down('lg'))
 
@@ -119,7 +121,7 @@ const NavItem = ({ item, level, navType, onClick, onUploadFile }) => {
                         color='inherit'
                         sx={{ my: 0.5 }}
                     >
-                        {item.title}
+                        {t(`menu.${item.id}`)}
                     </Typography>
                 }
                 secondary={
@@ -150,7 +152,7 @@ const NavItem = ({ item, level, navType, onClick, onUploadFile }) => {
                         background: theme.palette.teal.main,
                         color: 'white'
                     }}
-                    label={'BETA'}
+                    label={t('common.beta')}
                 />
             )}
         </ListItemButton>

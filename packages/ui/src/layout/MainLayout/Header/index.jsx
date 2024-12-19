@@ -1,14 +1,14 @@
 import PropTypes from 'prop-types'
-import { useSelector, useDispatch } from 'react-redux'
 import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 // material-ui
-import { useTheme } from '@mui/material/styles'
 import { Avatar, Box, ButtonBase, Switch } from '@mui/material'
-import { styled } from '@mui/material/styles'
+import { styled, useTheme } from '@mui/material/styles'
 
 // project imports
+import LanguageSwitcher from '@/components/LanguageSwitcher'
 import LogoSection from '../LogoSection'
 import ProfileSection from './ProfileSection'
 
@@ -126,9 +126,11 @@ const Header = ({ handleLeftDrawerToggle }) => {
                 </ButtonBase>
             </Box>
             <Box sx={{ flexGrow: 1 }} />
-            <MaterialUISwitch checked={isDark} onChange={changeDarkMode} />
-            <Box sx={{ ml: 2 }}></Box>
-            <ProfileSection handleLogout={signOutClicked} username={localStorage.getItem('username') ?? ''} />
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                <MaterialUISwitch checked={isDark} onChange={changeDarkMode} />
+                <LanguageSwitcher />
+                <ProfileSection handleLogout={signOutClicked} username={localStorage.getItem('username') ?? ''} />
+            </Box>
         </>
     )
 }

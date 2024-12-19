@@ -1,14 +1,14 @@
 // assets
 import {
-    IconUsersGroup,
-    IconHierarchy,
     IconBuildingStore,
+    IconFiles,
+    IconHierarchy,
     IconKey,
-    IconTool,
     IconLock,
     IconRobot,
-    IconVariable,
-    IconFiles
+    IconTool,
+    IconUsersGroup,
+    IconVariable
 } from '@tabler/icons-react'
 
 // constant
@@ -23,7 +23,6 @@ const dashboard = {
     children: [
         {
             id: 'chatflows',
-            title: 'Chatflows',
             type: 'item',
             url: '/chatflows',
             icon: icons.IconHierarchy,
@@ -31,7 +30,6 @@ const dashboard = {
         },
         {
             id: 'agentflows',
-            title: 'Agentflows',
             type: 'item',
             url: '/agentflows',
             icon: icons.IconUsersGroup,
@@ -40,7 +38,6 @@ const dashboard = {
         },
         {
             id: 'assistants',
-            title: 'Assistants',
             type: 'item',
             url: '/assistants',
             icon: icons.IconRobot,
@@ -48,7 +45,6 @@ const dashboard = {
         },
         {
             id: 'marketplaces',
-            title: 'Marketplaces',
             type: 'item',
             url: '/marketplaces',
             icon: icons.IconBuildingStore,
@@ -56,7 +52,6 @@ const dashboard = {
         },
         {
             id: 'tools',
-            title: 'Tools',
             type: 'item',
             url: '/tools',
             icon: icons.IconTool,
@@ -64,7 +59,6 @@ const dashboard = {
         },
         {
             id: 'credentials',
-            title: 'Credentials',
             type: 'item',
             url: '/credentials',
             icon: icons.IconLock,
@@ -72,7 +66,6 @@ const dashboard = {
         },
         {
             id: 'variables',
-            title: 'Variables',
             type: 'item',
             url: '/variables',
             icon: icons.IconVariable,
@@ -80,7 +73,6 @@ const dashboard = {
         },
         {
             id: 'apikey',
-            title: 'API Keys',
             type: 'item',
             url: '/apikey',
             icon: icons.IconKey,
@@ -88,7 +80,6 @@ const dashboard = {
         },
         {
             id: 'document-stores',
-            title: 'Document Stores',
             type: 'item',
             url: '/document-stores',
             icon: icons.IconFiles,
