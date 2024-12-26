@@ -1,8 +1,7 @@
-import { OllamaEmbeddings } from '@langchain/community/embeddings/ollama'
 import { OllamaInput } from '@langchain/community/llms/ollama'
+import { OllamaEmbeddings } from '@langchain/ollama'
 import { INode, INodeData, INodeParams } from '../../../src/Interface'
 import { getBaseClasses } from '../../../src/utils'
-
 class OllamaEmbedding_Embeddings implements INode {
     label: string
     name: string

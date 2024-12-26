@@ -1511,6 +1511,27 @@
                     "name": "us-west-2"
                 }
             ]
+        },
+        {
+            "name": "ollamaEmbedding_LlamaIndex",
+            "models": [
+                {
+                    "label": "llama2",
+                    "name": "llama2"
+                },
+                {
+                    "label": "mistral",
+                    "name": "mistral"
+                },
+                {
+                    "label": "codellama",
+                    "name": "codellama"
+                },
+                {
+                    "label": "nomic-embed-text",
+                    "name": "nomic-embed-text"
+                }
+            ]
         }
     ]
 }
