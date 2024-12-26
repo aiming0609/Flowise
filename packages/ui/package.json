@@ -8,9 +8,9 @@
         "email": "henryheng@flowiseai.com"
     },
     "dependencies": {
-        "@codemirror/lang-javascript": "^6.2.1",
+        "@codemirror/lang-javascript": "^6.2.2",
         "@codemirror/lang-json": "^6.0.1",
-        "@codemirror/view": "^6.22.3",
+        "@codemirror/view": "^6.36.1",
         "@emotion/cache": "^11.4.0",
         "@emotion/react": "^11.10.6",
         "@emotion/styled": "^11.10.6",
@@ -21,9 +21,9 @@
         "@mui/material": "5.15.0",
         "@mui/x-data-grid": "6.8.0",
         "@tabler/icons-react": "^3.3.0",
-        "@uiw/codemirror-theme-sublime": "^4.21.21",
-        "@uiw/codemirror-theme-vscode": "^4.21.21",
-        "@uiw/react-codemirror": "^4.21.21",
+        "@uiw/codemirror-theme-sublime": "^4.23.7",
+        "@uiw/codemirror-theme-vscode": "^4.23.7",
+        "@uiw/react-codemirror": "^4.23.7",
         "axios": "1.6.2",
         "clsx": "^1.1.1",
         "dotenv": "^16.0.0",
@@ -34,6 +34,8 @@
         "framer-motion": "^4.1.13",
         "history": "^5.0.0",
         "html-react-parser": "^3.0.4",
+        "i18next": "^23.7.16",
+        "i18next-browser-languagedetector": "^7.2.0",
         "lodash": "^4.17.21",
         "moment": "^2.29.3",
         "notistack": "^2.0.4",
@@ -44,6 +46,7 @@
         "react-datepicker": "^4.21.0",
         "react-device-detect": "^1.17.0",
         "react-dom": "^18.2.0",
+        "react-i18next": "^14.0.0",
         "react-markdown": "^8.0.6",
         "react-perfect-scrollbar": "^1.5.8",
         "react-redux": "^8.0.5",
@@ -58,10 +61,7 @@
         "remark-math": "^5.1.1",
         "socket.io-client": "^4.6.1",
         "uuid": "^9.0.1",
-        "yup": "^0.32.9",
-        "i18next": "^23.7.16",
-        "react-i18next": "^14.0.0",
-        "i18next-browser-languagedetector": "^7.2.0"
+        "yup": "^0.32.9"
     },
     "scripts": {
         "dev": "vite",
