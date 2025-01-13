@@ -2,9 +2,45 @@
  * Strictly no getRepository, appServer here, must be passed as parameter
  */
 
-import path from 'path'
+import {
+    CreateSecretCommand,
+    GetSecretValueCommand,
+    PutSecretValueCommand,
+    SecretsManagerClient,
+    SecretsManagerClientConfig
+} from '@aws-sdk/client-secrets-manager'
+import { randomBytes } from 'crypto'
+import { AES, enc } from 'crypto-js'
+import {
+    FlowiseMemory,
+    ICommonObject,
+    IDatabaseEntity,
+    IFileUpload,
+    IMessage,
+    convertChatHistoryToText,
+    getEncryptionKeyPath,
+    getInputVariables,
+    getS3Config,
+    handleEscapeCharacters
+} from 'flowise-components'
 import fs from 'fs'
-import logger from './logger'
+import { StatusCodes } from 'http-status-codes'
+import { cloneDeep, get, isEqual } from 'lodash'
+import multer from 'multer'
+import multerS3 from 'multer-s3'
+import path from 'path'
+import { DataSource } from 'typeorm'
+import { CachePool } from '../CachePool'
+import { Assistant } from '../database/entities/Assistant'
+import { ChatFlow } from '../database/entities/ChatFlow'
+import { ChatMessage } from '../database/entities/ChatMessage'
+import { Credential } from '../database/entities/Credential'
+import { DocumentStore } from '../database/entities/DocumentStore'
+import { DocumentStoreFileChunk } from '../database/entities/DocumentStoreFileChunk'
+import { Lead } from '../database/entities/Lead'
+import { Tool } from '../database/entities/Tool'
+import { Variable } from '../database/entities/Variable'
+import { InternalFlowiseError } from '../errors/internalFlowiseError'
 import {
     IChatFlow,
     IComponentCredentials,
@@ -26,43 +62,7 @@ import {
     IVariableOverride,
     IncomingInput
 } from '../Interface'
-import { cloneDeep, get, isEqual } from 'lodash'
-import {
-    convertChatHistoryToText,
-    getInputVariables,
-    handleEscapeCharacters,
-    getEncryptionKeyPath,
-    ICommonObject,
-    IDatabaseEntity,
-    IMessage,
-    FlowiseMemory,
-    IFileUpload,
-    getS3Config
-} from 'flowise-components'
-import { randomBytes } from 'crypto'
-import { AES, enc } from 'crypto-js'
-import multer from 'multer'
-import multerS3 from 'multer-s3'
-import { ChatFlow } from '../database/entities/ChatFlow'
-import { ChatMessage } from '../database/entities/ChatMessage'
-import { Credential } from '../database/entities/Credential'
-import { Tool } from '../database/entities/Tool'
-import { Assistant } from '../database/entities/Assistant'
-import { Lead } from '../database/entities/Lead'
-import { DataSource } from 'typeorm'
-import { CachePool } from '../CachePool'
-import { Variable } from '../database/entities/Variable'
-import { DocumentStore } from '../database/entities/DocumentStore'
-import { DocumentStoreFileChunk } from '../database/entities/DocumentStoreFileChunk'
-import { InternalFlowiseError } from '../errors/internalFlowiseError'
-import { StatusCodes } from 'http-status-codes'
-import {
-    CreateSecretCommand,
-    GetSecretValueCommand,
-    PutSecretValueCommand,
-    SecretsManagerClient,
-    SecretsManagerClientConfig
-} from '@aws-sdk/client-secrets-manager'
+import logger from './logger'
 
 const QUESTION_VAR_PREFIX = 'question'
 const FILE_ATTACHMENT_PREFIX = 'file_attachment'
@@ -1796,12 +1796,11 @@ export const getMulterStorage = () => {
     const storageType = process.env.STORAGE_TYPE ? process.env.STORAGE_TYPE : 'local'
 
     if (storageType === 's3') {
-        const s3Client = getS3Config().s3Client
-        const Bucket = getS3Config().Bucket
+        const { s3Client, Bucket } = getS3Config()
 
         const upload = multer({
             storage: multerS3({
-                s3: s3Client,
+                s3: s3Client as any,
                 bucket: Bucket,
                 metadata: function (req, file, cb) {
                     cb(null, { fieldName: file.fieldname, originalName: file.originalname, orgId: getOrgId() })

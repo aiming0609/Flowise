@@ -1,7 +1,7 @@
 import express, { Router } from 'express'
 import multer from 'multer'
 import vectorsController from '../../controllers/vectors'
-import { getMulterStorage } from '../../utils'
+import { getMulterStorage, getUploadPath } from '../../utils'
 
 const router: Router = express.Router()
 

@@ -1,5 +1,3 @@
-import path from 'path'
-import fs from 'fs'
 import {
     DeleteObjectsCommand,
     GetObjectCommand,
@@ -8,9 +6,11 @@ import {
     S3Client,
     S3ClientConfig
 } from '@aws-sdk/client-s3'
+import fs from 'fs'
 import { Readable } from 'node:stream'
-import { getUserHome } from './utils'
+import path from 'path'
 import sanitize from 'sanitize-filename'
+import { getUserHome } from './utils'
 
 export const addBase64FilesToStorage = async (fileBase64: string, chatflowid: string, fileNames: string[]) => {
     const storageType = getStorageType()
@@ -393,11 +393,12 @@ export const getS3Config = () => {
     }
 
     const s3Client = new S3Client({
-        credentials,
         region,
         endpoint: customURL,
-        forcePathStyle: forcePathStyle
+        forcePathStyle,
+        credentials
     })
+
     return { s3Client, Bucket }
 }
 
