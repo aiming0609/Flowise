@@ -6,7 +6,7 @@ import { getUploadPath } from '../../utils'
 const router: Router = express.Router()
 const upload = multer({ dest: getUploadPath() })
 
-router.post(['/upsert/', '/upsert/:id'], upload.array('files'), documentStoreController.upsertDocStoreMiddleware)
+router.post(['/upsert/', '/upsert/:id'], getMulterStorage().array('files'), documentStoreController.upsertDocStoreMiddleware)
 
 router.post(['/refresh/', '/refresh/:id'], documentStoreController.refreshDocStoreMiddleware)
 

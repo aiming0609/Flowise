@@ -1,7 +1,7 @@
 import express, { Router } from 'express'
 import multer from 'multer'
 import openaiAssistantsVectorStoreController from '../../controllers/openai-assistants-vector-store'
-import { getUploadPath } from '../../utils'
+import { getMulterStorage } from '../../utils'
 
 const router: Router = express.Router()
 const upload = multer({ dest: getUploadPath() })
@@ -22,7 +22,7 @@ router.put(['/', '/:id'], openaiAssistantsVectorStoreController.updateAssistantV
 router.delete(['/', '/:id'], openaiAssistantsVectorStoreController.deleteAssistantVectorStore)
 
 // POST
-router.post('/:id', upload.array('files'), openaiAssistantsVectorStoreController.uploadFilesToAssistantVectorStore)
+router.post('/:id', getMulterStorage().array('files'), openaiAssistantsVectorStoreController.uploadFilesToAssistantVectorStore)
 
 // DELETE
 router.patch(['/', '/:id'], openaiAssistantsVectorStoreController.deleteFilesFromAssistantVectorStore)
