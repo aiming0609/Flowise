@@ -1,6 +1,6 @@
 {
     "name": "flowise-ui",
-    "version": "2.2.5",
+    "version": "2.2.7",
     "license": "SEE LICENSE IN LICENSE.md",
     "homepage": "https://flowiseai.com",
     "author": {
@@ -21,10 +21,10 @@
         "@mui/material": "5.15.0",
         "@mui/x-data-grid": "6.8.0",
         "@tabler/icons-react": "^3.3.0",
-        "@uiw/codemirror-theme-sublime": "^4.23.7",
-        "@uiw/codemirror-theme-vscode": "^4.23.7",
-        "@uiw/react-codemirror": "^4.23.7",
-        "axios": "1.6.2",
+        "@uiw/codemirror-theme-sublime": "^4.21.21",
+        "@uiw/codemirror-theme-vscode": "^4.21.21",
+        "@uiw/react-codemirror": "^4.21.21",
+        "axios": "1.7.9",
         "clsx": "^1.1.1",
         "dotenv": "^16.0.0",
         "flowise-embed": "latest",
