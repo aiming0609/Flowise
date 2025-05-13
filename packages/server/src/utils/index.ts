@@ -62,6 +62,7 @@ import {
     IVariableOverride,
     IncomingInput
 } from '../Interface'
+import logger from './logger'
 
 export const QUESTION_VAR_PREFIX = 'question'
 export const FILE_ATTACHMENT_PREFIX = 'file_attachment'
