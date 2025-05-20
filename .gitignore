@@ -104,3 +104,8 @@
 ## S/MIME message
 *.smime
 *.vsix
+
+## cursor
+.cursor/rules
+
+
