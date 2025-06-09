@@ -19,6 +19,7 @@ import {
     IconShieldLock,
     IconStack2,
     IconTestPipe,
+    IconTool,
     IconUserEdit,
     IconUsers,
     IconUsersGroup,
