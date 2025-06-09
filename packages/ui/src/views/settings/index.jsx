@@ -11,6 +11,7 @@ import { useTheme } from '@mui/material/styles'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 
 // project imports
+import { useAuth } from '@/hooks/useAuth'
 import agentsettings from '@/menu-items/agentsettings'
 import customAssistantSettings from '@/menu-items/customassistant'
 import settings from '@/menu-items/settings'
@@ -25,6 +26,7 @@ const Settings = ({ chatflow, isSettingsOpen, isCustomAssistant, anchorEl, isAge
     const customization = useSelector((state) => state.customization)
     const inputFile = useRef(null)
     const [open, setOpen] = useState(false)
+    const { hasPermission } = useAuth()
 
     const handleFileUpload = (e) => {
         if (!e.target.files) return
@@ -64,6 +66,9 @@ const Settings = ({ chatflow, isSettingsOpen, isCustomAssistant, anchorEl, isAge
 
     // settings list items
     const items = settingsMenu.map((menu) => {
+        if (menu.permission && !hasPermission(menu.permission)) {
+            return null
+        }
         const Icon = menu.icon
         const itemIcon = menu?.icon ? (
             <Icon stroke={1.5} size='1.3rem' />
@@ -125,7 +130,7 @@ const Settings = ({ chatflow, isSettingsOpen, isCustomAssistant, anchorEl, isAge
                     <Transitions in={open} {...TransitionProps}>
                         <Paper>
                             <ClickAwayListener onClickAway={onClose}>
-                                <MainCard border={false} elevation={16} content={false} boxShadow shadow={theme.shadows[16]}>
+                                <MainCard border={false} elevation={16} content={false} boxShadow={theme.shadows[16]}>
                                     <PerfectScrollbar style={{ height: '100%', maxHeight: 'calc(100vh - 250px)', overflowX: 'hidden' }}>
                                         <Box sx={{ p: 2 }}>
                                             <List>{items}</List>
