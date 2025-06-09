@@ -1,4 +1,5 @@
-import express from 'express'
+import express, { Router } from 'express'
+import multer from 'multer'
 import documentStoreController from '../../controllers/documentstore'
 import { checkAnyPermission, checkPermission } from '../../enterprise/rbac/PermissionCheck'
 import { getMulterStorage, getUploadPath } from '../../utils'
